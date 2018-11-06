@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import classNames from 'classnames';
-import Gravatar from 'react-gravatar';
 import { withStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import ClickAwayListener from '@material-ui/core/ClickAwayListener';
@@ -13,6 +12,8 @@ import MenuItem from '@material-ui/core/MenuItem';
 import Paper from '@material-ui/core/Paper';
 import Popper from '@material-ui/core/Popper';
 import Toolbar from '@material-ui/core/Toolbar';
+
+import UserAvatar from '../UserAvatar';
 
 import { withContext } from '../../Context/AppStateProvider';
 import styles from './styles';
@@ -62,14 +63,7 @@ class Navbar extends Component {
           }}
             className='navbar-profile-icon-container'
             onClick={this.toggleDropdown}>
-
-            {userLogged.image !== 'none'
-              ? <img className='navbar-profile-icon'
-                src={userLogged.image}/>
-              : <Gravatar className='navbar-profile-icon'
-                email={contextState.userLogged.email} />
-            }
-
+            <UserAvatar {...userLogged}/>
           </IconButton>
 
           <Popper open={this.state.isDropdownOpen} anchorEl={this.anchorEl} transition disablePortal>
