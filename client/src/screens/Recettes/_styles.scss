@@ -1,0 +1,6 @@
+.recette-cards-container {
+  display: grid;
+  justify-content: center;
+  grid-template-columns: repeat(auto-fit, 400px); // 20px = grid-gap
+  grid-gap: 50px;
+}

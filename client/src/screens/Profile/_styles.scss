@@ -1,0 +1,45 @@
+.profile-container {
+  height: 100%;
+  width: 100%;
+  hr {
+    width: 90%;
+    margin: 20px auto;
+    border-bottom-color: #A7B8C3;
+  }
+  .profile-header-container {
+    margin-top: 20px;
+    text-align: center;
+    width: 100%;
+    height: 150px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    .profile-header__icon {
+      border: 5px solid #dbd9d9;
+      border-radius: 50%;
+      height: 80px;
+      width: 80px;
+    }
+  }
+  .profile-content__header {
+   display: grid;
+   align-items: flex-start;
+   grid-template-columns: repeat(12, 1fr);
+   .profile-content__header__title {
+      margin: 0 !important;
+      grid-row: 1;
+      grid-column: 4 / 10;
+   } 
+   .profile-content__header__create-recette {
+    grid-row: 1;     
+    grid-column: 10 / 12;
+   }
+  }
+  .profile-content__user-recipes {
+    display: grid;
+    justify-content: center;
+    grid-template-columns: repeat(3, calc(33.333% - 50px));
+    grid-gap: 50px;
+  }
+}

@@ -1,0 +1,30 @@
+@import url('https://fonts.googleapis.com/css?family=Titillium+Web');
+
+@font-face {
+  font-family:"TTCoralsThinDEMO";
+  src: url("/src/assets/fonts/TT_Corals_Thin-DEMO.woff") format("woff"),url("/src/assets/fonts/TT_Corals_Thin-DEMO.ttf") format("truetype"),url("/src/assets/fonts/TT_Corals_Thin-DEMO.svg#TTCoralsThinDEMO") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+$defaultFontFamily: 'Titillium Web', sans-serif;
+
+* {
+  font-family: $defaultFontFamily !important;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  overflow-x: hidden;
+  a {
+    text-decoration: none;
+  }
+}
+
+.layout-title {
+  margin: 20px 0 !important;
+  color: $lightBlue !important;
+  text-align: center;
+  text-transform: uppercase;
+}

@@ -1,0 +1,18 @@
+.input-container {
+    .custom-input  {
+        margin-bottom: 20px;
+        border-radius: 50px;     
+        width: 300px;   
+        input {
+            background: linear-gradient(to right, #D3ECE4, #DCE3E9) !important;
+            width: 300px !important;
+            font-size: 16px !important;
+            font-weight: bold !important;
+            color: #4C7F87 !important;
+            height: 33px !important;
+            text-align: center; 
+            border-radius: 50px;
+        }  
+    }    
+}
+

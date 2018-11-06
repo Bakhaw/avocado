@@ -1,0 +1,77 @@
+form {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+}
+
+.choose-register-type {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 350px;
+}
+
+.sign-type {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+}
+
+.form-container {
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
+    p {
+        letter-spacing: 0.5px;
+        color: #30466D;
+        font-weight: bold;
+    }
+}
+
+.forgot-password {
+    text-align: right;
+    transform: translateY(-30px);
+}
+
+.sign-link:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.form-header {
+    width: 300px;
+    display: flex;
+    justify-content: center;
+    hr {
+        background: linear-gradient(to right, #9FDFD1, #8DB5CE);
+        border: none;
+        width: 70px;
+        height: 1px;
+    }
+    div:nth-child(2) {
+        width: 100%;
+        text-align: center;
+    }
+    h3 {
+        color: #48B08D;
+        letter-spacing: 1px;
+        font-family: 'TTCoralsThinDEMO' !important;
+        margin: 0;
+    }
+    .prev-button {
+        width: 0px; // * pour aligner le texte du header, pas besoin de width, le svg est cliquable quand meme
+    }
+    svg {
+        display: none;
+        transform: scale(1.6);
+        fill: #42CDA3 !important;
+        &:active {
+            transform: scale(1);
+        }
+        &:hover {
+            fill: #2e886d !important;
+        }
+    }
+}

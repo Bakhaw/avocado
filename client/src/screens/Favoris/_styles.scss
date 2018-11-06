@@ -1,0 +1,7 @@
+.favorites-container {
+  width: 100%;
+  display: grid;
+  justify-content: center;
+  grid-template-columns: repeat(3, calc(33.333% - 50px));
+  grid-gap: 50px;
+}

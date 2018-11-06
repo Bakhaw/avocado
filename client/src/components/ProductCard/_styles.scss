@@ -1,0 +1,39 @@
+// ==========================================
+//            PRODUCT CARD
+// ==========================================
+
+.product-card {
+  height: 100% !important;
+  width: 100% !important;
+  background: #fff;
+  color: #0c1e29;
+  border-radius: .5rem;
+  box-shadow: 5px 15px 35px 0 rgba(42,51,83,.12), 0 5px 15px rgba(0,0,0,.06) !important;
+  .product-card-icon {
+      height: 30px;
+      width: 30px;
+  }
+}
+
+.product-card-content {
+  padding-top: 0 !important;
+  display: flex;
+  justify-content: space-between;
+}
+
+.product-card-progress-bar-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: center;
+}
+
+.product-card-progress-bar {
+  transform: rotate(270deg) scaleX(2.5);
+  height: 2px !important;
+  width: 80px !important;
+  background-color: rgb(242, 243, 242) !important;
+  div {
+      background: $lightBlue;
+  }
+}

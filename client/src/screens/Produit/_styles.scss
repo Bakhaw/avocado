@@ -1,0 +1,8 @@
+.product-container {
+  height: 100%;
+  display: grid;
+  justify-content: center;
+  grid-template-columns: repeat(auto-fit, 400px);
+  grid-template-rows: repeat(auto-fit, 450px);
+  grid-gap: 50px;
+}
