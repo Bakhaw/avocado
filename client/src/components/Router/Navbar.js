@@ -63,7 +63,7 @@ class Navbar extends Component {
             className='navbar-profile-icon-container'
             onClick={this.toggleDropdown}>
 
-            {userLogged.image
+            {userLogged.image !== 'none'
               ? <img className='navbar-profile-icon'
                 src={userLogged.image}/>
               : <Gravatar className='navbar-profile-icon'

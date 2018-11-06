@@ -22,6 +22,7 @@ const UserSchema = new Schema({
     },
     image: {
         type: String,
+        default: 'none',
         required: false
     },
     googleId: {

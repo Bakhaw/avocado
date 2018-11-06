@@ -5,7 +5,7 @@ import { withContext } from '../../../Context/AppStateProvider';
 
 const ProfileIcon = ({ contextState }) => {
   const { email, image } = contextState.selectedUserProfile;
-  const userHasAnImage = typeof image !==  'undefined';
+  const userHasAnImage = image !==  'none';
   return (
     <Fragment>
       {userHasAnImage

@@ -11,11 +11,13 @@ const Header = ({ item }) => {
 
     const avatar =
         <Tooltip title={displayName} placement='top' id='recette-card-tooltip'>
-            {authorImage
+            {authorImage !== 'none'
                 ? <img src={authorImage} alt='Image de profil' />
                 : <Gravatar email={email} />
             }
         </Tooltip>
+
+    console.log(item.authorInfos);
 
     return (
         <CardHeader
