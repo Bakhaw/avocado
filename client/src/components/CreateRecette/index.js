@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react'
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
 
@@ -25,7 +26,7 @@ class CreateRecette extends Component {
 
         return (
             <Fragment>
-                <Button className='create-recette__button'
+                <Button className='create-recette__open-button'
                     onClick={this.openDialog}
                     variant='contained'>
                     Ajouter une recette
@@ -35,10 +36,18 @@ class CreateRecette extends Component {
                     fullWidth={true}
                     onClose={this.closeDialog}
                     open={isDialogOpen}>
+                    {/* open={isDialogOpen}> */}
                     <DialogTitle id='simple-dialog-title'>Ajouter une recette</DialogTitle>
                     <DialogContent>
-                        <CreateRecetteForm />
+                        <CreateRecetteForm closeDialog={this.closeDialog} />
                     </DialogContent>
+                    <DialogActions>
+                        <Button className='create-recette__close-button'
+                            onClick={this.closeDialog}
+                            variant='text'>
+                            Fermer
+                        </Button>
+                    </DialogActions>
                 </Dialog>
             </Fragment>
         )

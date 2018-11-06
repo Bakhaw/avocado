@@ -8,13 +8,12 @@ import FavoriteRecipes from './FavoriteRecipes';
 class Favoris extends Component {
 
   componentDidMount() {
-    this.props.contextActions.getFavorites();
+    this.props.contextActions.getAllFavorites();
   }
 
   render() { 
     return (
       <LayoutContainer>
-        <p>Favoris Page</p>
         <div className='favorites-container'>
           <FavoriteRecipes />
         </div>

@@ -3,8 +3,8 @@ import Gravatar from 'react-gravatar';
 
 import { withContext } from '../../../Context/AppStateProvider';
 
-const ProfileIcon = ({ userProfile }) => {
-  const { email, image } = userProfile;
+const ProfileIcon = ({ contextState }) => {
+  const { email, image } = contextState.selectedUserProfile;
   const userHasAnImage = typeof image !==  'undefined';
   return (
     <Fragment>

@@ -9,8 +9,7 @@ import { withContext } from '../../Context/AppStateProvider';
 class Recettes extends Component {
 
   componentDidMount() {
-    const { getRecipes } = this.props.contextActions;
-    getRecipes();
+    this.props.contextActions.getAllRecipes();
   }
 
   render() {
@@ -19,8 +18,6 @@ class Recettes extends Component {
 
     return (
       <LayoutContainer>
-        <p>Recettes Page</p>
-
         <div className='recette-cards-container'>
           {recipes.map((item, index) => (
               <RecetteCard key={index}

@@ -5,10 +5,10 @@ import { withStyles } from '@material-ui/core/styles';
 import LeftMenu from './LeftMenu';
 import Navbar from './Navbar';
 import Stepper from '../NotLogged/Stepper';
+import Spinner from '../Spinner';
 
 import Favoris from '../../screens/Favoris';
 import Home from '../../screens/Home';
-import MemberProfile from '../../screens/MemberProfile';
 import Profile from '../../screens/Profile';
 import Produit from '../../screens/Produit';
 import Produits from '../../screens/Produits';
@@ -23,10 +23,8 @@ class Router extends Component {
     open: false,
   };
 
-  componentDidMount() {
-    const { getUserInfos } = this.props.contextActions;
-
-    getUserInfos();
+  async componentDidMount() {
+    await this.props.contextActions.getUserLogged();    
   }
 
   handleDrawerOpen = () => {
@@ -39,9 +37,9 @@ class Router extends Component {
 
   render() {
     const { open } = this.state;
-    const { contextState } = this.props;
+    const { isUserLogged } = this.props.contextState;
 
-    if (!contextState.isUserLogged) return <Stepper />;
+    if (!isUserLogged) return <Stepper />;
 
     return (
       <HashRouter>
@@ -57,7 +55,6 @@ class Router extends Component {
               <Route path='/produits/:productType' component={Produits}/>
               <Route path='/recettes/:recetteId' component={Recette}/>
               <Route path='/profil/:memberId' component={Profile} />
-              {/* <Route path='/profil' component={Profile} /> */}
               <Route path='/recettes' component={Recettes}/>
               <Route path='/favoris' component={Favoris}/>              
               <Route path='/' component={Home} />

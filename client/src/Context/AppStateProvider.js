@@ -15,13 +15,15 @@ export default class AppStateProvider extends Component {
     appLoading: false,
     isLeftMenuOpen: false,
     isUserLogged: false,
-    userInfos: {},
+    userLogged: null,
+    selectedUserProfile: null,
+    selectedUserRecipes: [],
     recipes: [],
     favorites: [],
   }
 
-  toggleAppLoading = bool => {
-    this.setState({ appLoading: bool });
+  toggleAppLoading = async (bool) => {
+    await this.setState({ appLoading: bool });
   }
 
   openLeftMenu = () => {
@@ -32,11 +34,11 @@ export default class AppStateProvider extends Component {
     this.setState({ isLeftMenuOpen: false });
   }
 
-  getUserInfos = async () => {
+  getUserLogged = async () => {
     const { isUserLogged } = this.state;
 
     if (!isUserLogged) {
-      this.setState({ appLoading: true })
+      this.toggleAppLoading(true)
     }
     try {
       const request = await axios.get('/auth/profile');
@@ -44,7 +46,7 @@ export default class AppStateProvider extends Component {
 
       if (profile.user === null) {
         console.log("Pas d'utilisateur connecté...");
-        return this.setState({ appLoading: false });
+        return this.toggleAppLoading(false)
       }
 
       if (profile.user) {
@@ -53,7 +55,7 @@ export default class AppStateProvider extends Component {
         return this.setState({
           appLoading: false,
           isUserLogged: true,
-          userInfos: { _id, displayName, email, favoritesId, image }
+          userLogged: { _id, displayName, email, favoritesId, image }
         });
       }
     } catch (err) {
@@ -71,32 +73,45 @@ export default class AppStateProvider extends Component {
     }
   }
 
-  getRecipes = async () => {
+  getAllRecipes = async () => {
     try {
       const request = await axios.get('/recipes');
       const recipes = await request.data;
-      console.log('Recettes!', recipes);
       return this.setState({ recipes });
     } catch (err) {
       console.log(err);
     }
   }
 
-  getFavorites = async () => {
-    const { _id } = this.state.userInfos;
+  getAllFavorites = async () => {
+    const { _id } = this.state.userLogged;
     try {
       const request = await axios.get(`/favoris/${_id}`);
       const favorites = await request.data;
-      console.log('FAVORIS!', favorites);
       return this.setState({ favorites });
     } catch (err) {
       console.log(err);
     }
   }
 
+  getSelectedUserProfile = async () => {
+    const userId = window.location.hash.split('profil/')[1];
+    const request = await axios.get(`/users/id/${userId}`);
+    const selectedUserProfile = await request.data;
+    await this.setState({ selectedUserProfile });
+  }
+
+  getSelectedUserRecipes = async () => {
+    const { _id } = this.state.selectedUserProfile;
+    const request = await axios.get(`/recipes/createdBy/${_id}`);
+    const selectedUserRecipes = request.data;
+    await this.setState({ selectedUserRecipes });
+  }
+
   render() {
     const {
-      isLeftMenuOpen, appLoading, isUserLogged, userInfos,
+      isLeftMenuOpen, appLoading, isUserLogged, userLogged,
+      selectedUserProfile, selectedUserRecipes,
       recipes, favorites
     } = this.state;
     return (
@@ -105,7 +120,9 @@ export default class AppStateProvider extends Component {
           isLeftMenuOpen,
           appLoading,
           isUserLogged,
-          userInfos,
+          userLogged,
+          selectedUserProfile,
+          selectedUserRecipes,
           recipes,
           favorites
         },
@@ -113,10 +130,12 @@ export default class AppStateProvider extends Component {
           toggleAppLoading: this.toggleAppLoading,
           openLeftMenu: this.openLeftMenu,
           closeLeftMenu: this.closeLeftMenu,
-          getUserInfos: this.getUserInfos,
+          getUserLogged: this.getUserLogged,
+          getSelectedUserProfile: this.getSelectedUserProfile,
+          getSelectedUserRecipes: this.getSelectedUserRecipes,
           signOut: this.signOut,
-          getRecipes: this.getRecipes,
-          getFavorites: this.getFavorites
+          getAllRecipes: this.getAllRecipes,
+          getAllFavorites: this.getAllFavorites
         }
       }}>
         {this.props.children}

@@ -38,11 +38,12 @@ class Navbar extends Component {
   render() {
     const { contextActions, contextState, classes } = this.props;
     const { openLeftMenu, signOut } = contextActions;
-    const { isLeftMenuOpen, userInfos } = contextState;
+    const { isLeftMenuOpen, userLogged } = contextState;
 
     return (
       <AppBar
-        position='sticky'
+        position='fixed'
+        style={{ margin: 0 }}
         className={classNames(classes.appBar, isLeftMenuOpen && classes.appBarShift)
         }
       >
@@ -62,11 +63,11 @@ class Navbar extends Component {
             className='navbar-profile-icon-container'
             onClick={this.toggleDropdown}>
 
-            {userInfos.image
+            {userLogged.image
               ? <img className='navbar-profile-icon'
-                src={userInfos.image}/>
+                src={userLogged.image}/>
               : <Gravatar className='navbar-profile-icon'
-                email={contextState.userInfos.email} />
+                email={contextState.userLogged.email} />
             }
 
           </IconButton>
@@ -81,7 +82,7 @@ class Navbar extends Component {
                 <Paper>
                   <ClickAwayListener onClickAway={this.closeDropdown}>
                     <MenuList>
-                      <Link to={`/profil/${userInfos._id}`}>
+                      <Link to={`/profil/${userLogged._id}`}>
                         <MenuItem>Profil</MenuItem>
                       </Link>
                       <MenuItem onClick={signOut}>Déconnexion</MenuItem>

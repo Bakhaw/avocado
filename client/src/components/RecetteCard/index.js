@@ -31,24 +31,24 @@ class RecetteCard extends Component {
     }
 
     const { contextActions, contextState, item } = this.props;
-    const { getRecipes } = contextActions;
-    const { userInfos } = contextState;
+    const { getAllRecipes } = contextActions;
+    const { userLogged } = contextState;
 
     const recetteId = item._id;
-    const userId = userInfos._id;
+    const userId = userLogged._id;
 
     await axios.post(`/recipes/like/${recetteId}/${userId}`);
-    await getRecipes();
+    await getAllRecipes();
     await this.checkLikeButtonClass();
   }
 
   // ! NEEDS REFACTOR !!
   checkLikeButtonClass = () => {
     const { contextState, item } = this.props;
-    const { userInfos } = contextState;
+    const { userLogged } = contextState;
 
     const recetteId = item._id;
-    const userId = userInfos._id;
+    const userId = userLogged._id;
 
     const likeButton = document.getElementsByClassName(`heart-button-${recetteId}`);
     const likesNumber = document.getElementsByClassName(`likes-number-${recetteId}`);
@@ -73,15 +73,16 @@ class RecetteCard extends Component {
 
   addToFavorites = async () => {
     const { contextActions, contextState, item } = this.props;
-    const { getUserInfos } = contextActions;
-    const { userInfos } = contextState;
+    const { getAllFavorites, getUserLogged } = contextActions;
+    const { userLogged } = contextState;
 
     const recetteId = item._id;
-    const userId = userInfos._id;
+    const userId = userLogged._id;
 
     try {
       await axios.post(`/favoris/add/${recetteId}/${userId}`)
-      await getUserInfos();
+      await getUserLogged();
+      await getAllFavorites();
       await this.checkLikeButtonClass();
     } catch (err) {
       return console.log(err)

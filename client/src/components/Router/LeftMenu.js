@@ -69,7 +69,7 @@ const LeftMenuData = [
 const LeftMenu = ({ contextActions, contextState, classes, theme }) => {
   const { drawerPaper, drawerPaperClose, toolbar } = classes;
   const { closeLeftMenu, signOut } = contextActions;
-  const { isLeftMenuOpen, userInfos } = contextState;
+  const { isLeftMenuOpen, userLogged } = contextState;
   return (
     <Drawer
       variant="permanent"
@@ -92,7 +92,7 @@ const LeftMenu = ({ contextActions, contextState, classes, theme }) => {
           return (
             <Link key={index}
               onClick={text === 'Déconnexion' ? signOut : null}
-              to={text === 'Profil' ? `${routeTo}/${userInfos._id}` : routeTo}>
+              to={text === 'Profil' ? `${routeTo}/${userLogged._id}` : routeTo}>
               <ListItem button className={
                 classNames(
                   'list-item',

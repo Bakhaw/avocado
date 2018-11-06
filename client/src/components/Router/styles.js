@@ -11,6 +11,7 @@ const styles = theme => ({
     display: 'flex',
   },
   appBar: {
+    backgroundColor: '#48B08D',
     height: navbarHeight,
     zIndex: theme.zIndex.drawer + 1,
     transition: theme.transitions.create(['width', 'margin'], {

@@ -1,4 +1,5 @@
 .recette-cards-container {
+  margin: 20px 0;
   display: grid;
   justify-content: center;
   grid-template-columns: repeat(auto-fit, 400px); // 20px = grid-gap

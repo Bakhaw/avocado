@@ -1,4 +1,5 @@
 .profile-container {
+  margin: 20px 0;
   height: 100%;
   width: 100%;
   hr {
@@ -27,6 +28,8 @@
    align-items: flex-start;
    grid-template-columns: repeat(12, 1fr);
    .profile-content__header__title {
+      text-align: center;
+      color: $lightBlue;
       margin: 0 !important;
       grid-row: 1;
       grid-column: 4 / 10;

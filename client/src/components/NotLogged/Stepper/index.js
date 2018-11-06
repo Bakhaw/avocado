@@ -8,8 +8,11 @@ import ChooseSignType from '../Forms/ChooseSignType';
 import ChooseRegisterType from '../Forms/ChooseRegisterType';
 import LoginForm from '../Forms/LoginForm';
 import RegisterForm from '../Forms/RegisterForm';
+import Spinner from '../../Spinner';
 
 import styles from './styles';
+
+import { withContext } from '../../../Context/AppStateProvider';
 
 class StepperComp extends Component {
 
@@ -93,6 +96,10 @@ class StepperComp extends Component {
 
   render() {
     const { loading, stepIndex, stepsNumber } = this.state;
+    const { appLoading } = this.props.contextState;
+
+    if (appLoading) return <div style={{ height: '100vh' }}><Spinner /></div>;
+
     return (
       <div style={styles.container}>
         <ExpandTransition loading={loading} open={true}>
@@ -106,4 +113,4 @@ class StepperComp extends Component {
   }
 }
 
-export default StepperComp;
+export default withContext(StepperComp);

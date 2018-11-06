@@ -2,38 +2,46 @@ import React, { Component } from 'react';
 
 import ProfileContent from './ProfileContent';
 import ProfileHeader from './ProfileHeader';
+import Spinner from '../../components/Spinner';
 
 import LayoutContainer from '../../components/LayoutContainer';
 import { withContext } from '../../Context/AppStateProvider';
-import axios from 'axios';
 
 class Profile extends Component {
 
-  state = {
-    userProfile: null
-  }
-
   async componentDidMount() {
-    await this.getUserProfile();
+    const { getSelectedUserProfile, toggleAppLoading } = this.props.contextActions;
+    
+    toggleAppLoading(true);
+    await getSelectedUserProfile();
+    toggleAppLoading(false);
   }
 
-  getUserProfile = async () => {
-    const userId = this.props.match.params.memberId;
-    const request = await axios.get(`/users/id/${userId}`);
-    const userProfile = await request.data;
-    this.setState({ userProfile });
+  async componentDidUpdate(prevProps) {
+    const previousId = prevProps.match.params.memberId;
+    const currentId = this.props.match.params.memberId;
+
+    if (previousId !== currentId) {
+      const { getSelectedUserProfile, toggleAppLoading } = this.props.contextActions;
+
+      toggleAppLoading(true);
+      await getSelectedUserProfile();
+      toggleAppLoading(false);
+    }
   }
 
   render() {
-    const { userProfile } = this.state;
-
-    return (
+    const { appLoading, selectedUserProfile } = this.props.contextState;
+    
+      return (
       <LayoutContainer>
-        {userProfile &&
+        {appLoading && <Spinner />}
+
+        {selectedUserProfile &&
           <div className='profile-container'>
-            <ProfileHeader userProfile={userProfile} />
+            <ProfileHeader />
             <hr />
-            <ProfileContent userProfile={userProfile} />
+            <ProfileContent />
           </div>
         }
       </LayoutContainer>

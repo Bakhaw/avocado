@@ -3,16 +3,21 @@
         margin-bottom: 20px;
         border-radius: 50px;     
         width: 300px;   
-        input {
-            background: linear-gradient(to right, #D3ECE4, #DCE3E9) !important;
-            width: 300px !important;
-            font-size: 16px !important;
-            font-weight: bold !important;
-            color: #4C7F87 !important;
-            height: 33px !important;
+        input, textarea {
+            background: linear-gradient(to right, #D3ECE4, #DCE3E9);
+            width: 100%;
+            font-size: 16px;
+            font-weight: bold;
+            color: #4C7F87;
             text-align: center; 
             border-radius: 50px;
-        }  
+        }
+        input {
+            height: 33px;
+        }
+        textarea {
+            height: auto;
+        }
     }    
 }
 
