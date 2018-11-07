@@ -15,18 +15,17 @@ const Input = ({
     return (
         <div className='input-container'>
             <TextField className='custom-input'
+                defaultValue={value}
                 error={errForm}
                 helperText={errForm ? errMsg : ''}
                 InputProps={{ disableUnderline: true }}
-                margin='normal'
                 multiline={multiline}
                 name={name}
                 onBlur={onBlur}
                 onChange={onChange}
                 placeholder={inputText}
-                rows='4'
+                rows='5'
                 type={type}
-                defaultValue={value}
             />
         </div>
     );

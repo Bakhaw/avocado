@@ -31,13 +31,12 @@ class CreateRecette extends Component {
                     variant='contained'>
                     Ajouter une recette
                 </Button>
-                <Dialog aria-labelledby='simple-dialog-title'
+                <Dialog aria-labelledby='dialog-title'
                     maxWidth='lg'
                     fullWidth={true}
                     onClose={this.closeDialog}
                     open={isDialogOpen}>
-                    {/* open={isDialogOpen}> */}
-                    <DialogTitle id='simple-dialog-title'>Ajouter une recette</DialogTitle>
+                    <DialogTitle id='dialog-title'>Ajouter une recette</DialogTitle>
                     <DialogContent>
                         <CreateRecetteForm closeDialog={this.closeDialog} />
                     </DialogContent>

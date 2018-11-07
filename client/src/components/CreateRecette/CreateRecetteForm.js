@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios';
 import Button from '@material-ui/core/Button';
+import TextField from '@material-ui/core/TextField';
 
 import Input from '../../components/Input';
 import RecetteFormTemplate from './RecetteFormTemplate';
@@ -32,6 +33,7 @@ class CreateRecetteForm extends Component {
     }
 
     handleFormSubmit = async (e) => {
+        console.log('fired my man')
         e.preventDefault();
 
         const params = new FormData();
@@ -61,7 +63,7 @@ class CreateRecetteForm extends Component {
                 url: '/recipes/add',
                 data: params
             });
-            
+
             await getSelectedUserRecipes();
             closeDialog();
         } catch (err) {
@@ -71,34 +73,49 @@ class CreateRecetteForm extends Component {
 
     render() {
         return (
-            <form onSubmit={this.handleFormSubmit}>
-                {RecetteFormTemplate.map((item, index) => {
-                    const { inputText, multiline, name, select, type, value } = item;
-                    return (
-                        <Input key={index}
-                            inputText={inputText}
-                            multiline={multiline}
-                            name={name}
-                            onChange={this.handleInputChange}
-                            select={select}
-                            type={type}
-                            value={this.state[value]} />
-                    )
-                })}
+            <div className='create-recette-container'>
+                <form className='create-recette-form' onSubmit={this.handleFormSubmit}>
+                    {RecetteFormTemplate.map((item, index) => {
+                        const { inputText, multiline, name, type, value } = item;
+                        return (
+                            <TextField key={index}
+                                label={inputText}
+                                multiline={multiline}
+                                name={name}
+                                rowsMax='5'
+                                type={type}
+                                defaultValue={this.state[value]}
+                                variant='outlined'
+                            />
+                            // <Input key={index}
+                            //     inputText={inputText}
+                            //     multiline={multiline}
+                            //     name={name}
+                            //     onChange={this.handleInputChange}
+                            //     type={type}
+                            //     value={this.state[value]}
+                            // />
+                        )
+                    })}
 
-                <label htmlFor='recette-image-input'>Image de votre recette</label>
-                <input id='recette-image-input'
-                    name='recetteImage'
-                    onChange={this.handleInputChange}
-                    type='file' />
-                <Button className='create-recette__open-button'
-                    onClick={this.openDialog}
-                    type='submit'
-                    variant='contained'>
-                    Ajouter une recette
-                </Button>
-                {/* <button type='submit'>Ajouter</button> */}
-            </form>
+                    <div>
+                        <label htmlFor='recette-image-input'>
+                            Image de votre recette
+                            <input id='recette-image-input'
+                                name='recetteImage'
+                                onChange={this.handleInputChange}
+                                type='file'
+                            />
+                        </label>
+                    </div>
+                    <Button className='create-recette__submit-button'
+                        type='submit'
+                        variant='contained'>
+                        Ajouter une recette
+                    </Button>
+                </form>
+
+            </div>
         )
     }
 }

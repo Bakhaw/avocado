@@ -6,12 +6,39 @@
   height: 100% !important;
   width: 100% !important;
   background: #fff;
-  color: #0c1e29;
   border-radius: .5rem;
+  box-shadow: none !important;
+  transition: 0.3s;
   box-shadow: 5px 15px 35px 0 rgba(42,51,83,.12), 0 5px 15px rgba(0,0,0,.06) !important;
   .product-card-icon {
       height: 30px;
       width: 30px;
+  }
+  .product-card-title {
+    text-align: center;
+    height: 90px;
+    h4 {
+        font-size: 20px;
+        color: #111010;
+        margin: 0;
+        position: relative;
+    }
+  }
+  &:hover {
+    background: $lightBlue;
+    color: #fff !important;
+    .product-card-title h4 {
+      color: #fff;
+    }
+    .product-card-progress-bar-container p {
+      color: #fff;
+    }
+    .product-card-progress-bar {
+      background-color: #111010 !important;
+      div {
+        background-color: #fff;
+      }
+    }
   }
 }
 
@@ -34,6 +61,6 @@
   width: 80px !important;
   background-color: rgb(242, 243, 242) !important;
   div {
-      background: $lightBlue;
+      background-color: $lightBlue;
   }
 }
