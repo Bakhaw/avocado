@@ -1,0 +1,12 @@
+.empty-state {
+  width: 100%;
+  grid-column: 4 / 10;
+  .empty-state__image {
+    height: auto;
+    width: 100%;
+  }
+  .empty-state__text {
+    text-align: center;
+    color: $gray;
+  }
+}

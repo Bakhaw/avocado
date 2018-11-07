@@ -21,8 +21,8 @@ const LeftMenuData = [
     text: 'Accueil',
     iconActive: `${baseImgPath}/icon-accueil-active.svg`,
     iconDefault: `${baseImgPath}/icon-accueil.svg`,
-    routeActive: '#/',
-    routeTo: '/'
+    routeActive: '#/accueil',
+    routeTo: '/accueil'
   },
   {
     text: 'Fruits',
@@ -87,7 +87,7 @@ const LeftMenu = ({ contextActions, contextState, classes, theme }) => {
       <List className='left-menu-list-items'>
         {LeftMenuData.map((item, index) => {
           const { iconActive, iconDefault, routeActive, routeTo, text } = item;
-          const isRouteActive = window.location.hash === routeActive;
+          const isRouteActive = window.location.hash.includes(routeActive);
           const itemIcon = isRouteActive ? iconActive : iconDefault;
           return (
             <Link key={index}

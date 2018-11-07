@@ -1,9 +1,10 @@
 const drawerWidth = 240;
 const navbarHeight = 60;
-const navbarPadding = 80;
+const navbarPadding = 60;
 
 const styles = theme => ({
   layoutContainerWhenLeftMenuOpen: {
+    marginTop: navbarPadding,
     height: `calc(100vh - ${navbarHeight}px)`,    
     width: `calc(100vw - ${drawerWidth}px)`,
     marginLeft: drawerWidth,

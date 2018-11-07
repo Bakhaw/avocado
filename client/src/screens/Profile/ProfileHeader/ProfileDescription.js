@@ -7,8 +7,10 @@ const ProfileDescription = ({ contextState }) => {
   const { displayName, email } = contextState.selectedUserProfile;
   return (
     <Fragment>
-      <Typography variant='title'>{displayName}</Typography>
-      <Typography variant='subheading'>{email}</Typography>
+      <Typography variant='title' className='profile-description__displayName'>
+        {displayName}
+      </Typography>
+      {/* <Typography variant='subheading'>{email}</Typography> */}
     </Fragment>
   )
 };

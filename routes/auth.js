@@ -52,7 +52,7 @@ router.post('/login',
         next()
     },
     passport.authenticate('local', {
-        successRedirect: '/',
+        successRedirect: '/#/accueil',
         failureRedirect: '/'
     }),
     (req, res) => {

@@ -6,7 +6,7 @@ import Recette from '../models/Recette';
 const router = Router();
 
 const storage = multer.diskStorage({
-    destination: path.resolve('client/src/assets/images/recetteImages'),
+    destination: path.resolve('client/src/assets/images/recette-images'),
     filename(req, file, cb) {
         cb(null, file.originalname);
     },

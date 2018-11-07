@@ -4,7 +4,7 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 const Spinner = () => {
     return (
         <div className='spinner-container'>
-            <CircularProgress style={{ color: '#48B08D' }} />
+            <CircularProgress className='spinner'/>
         </div>
     )
 }

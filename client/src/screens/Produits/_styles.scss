@@ -1,7 +1,9 @@
-.products-container {
-  display: grid;
-  justify-content: center;
-  grid-template-columns: repeat(auto-fit, 280px);
-  grid-gap: 50px;
-  margin-bottom: 20px;
+.products-page-container {
+  margin: 20px 10px;
+  .product-cards-container {
+    display: grid;
+    justify-content: center;
+    grid-template-columns: repeat(auto-fit, 280px);
+    grid-gap: 50px;
+  }
 }

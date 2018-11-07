@@ -63,19 +63,21 @@ class Produits extends Component {
 
     return (
       <LayoutContainer>
-        <Typography className='layout-title' variant='title'>{pageTitle}</Typography>
-        <div className='products-container'>
-          {products
-            // .filter(product => product.name.toLowerCase().indexOf(searchBar.toLowerCase()) !== -1)
-            .map((product, i) => {
-              return (
-                <Link key={i}
-                  to={`/${productCategory}/${product._id}`}
-                  params={{ productId: product._id }}>
-                  <ProductCard item={product} infosBars={false} />
-                </Link>
-              )
-            })}
+        <div className='products-page-container'>
+          <Typography className='layout-title' variant='title'>{pageTitle}</Typography>
+          <div className='product-cards-container'>
+            {products
+              // .filter(product => product.name.toLowerCase().indexOf(searchBar.toLowerCase()) !== -1)
+              .map((product, i) => {
+                return (
+                  <Link key={i}
+                    to={`/${productCategory}/${product._id}`}
+                    params={{ productId: product._id }}>
+                    <ProductCard item={product} infosBars={false} />
+                  </Link>
+                )
+              })}
+          </div>
         </div>
       </LayoutContainer>
     )

@@ -57,7 +57,7 @@ class Router extends Component {
               <Route path='/profil/:memberId' component={Profile} />
               <Route path='/recettes' component={Recettes}/>
               <Route path='/favoris' component={Favoris}/>              
-              <Route path='/' component={Home} />
+              <Route path='/accueil' component={Home} />
             </Switch>
           </div>
 

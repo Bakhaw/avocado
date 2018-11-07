@@ -63,7 +63,7 @@ class Navbar extends Component {
           }}
             className='navbar-profile-icon-container'
             onClick={this.toggleDropdown}>
-            <UserAvatar {...userLogged}/>
+            <UserAvatar {...userLogged} sizeInPixels={30}/>
           </IconButton>
 
           <Popper open={this.state.isDropdownOpen} anchorEl={this.anchorEl} transition disablePortal>

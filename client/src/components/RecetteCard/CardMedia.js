@@ -3,7 +3,7 @@ import CardMedia from '@material-ui/core/CardMedia';
 
 const Media = ({ item }) => {
     const { recetteImage, title } = item.recetteInfos;
-    const image = `src/assets/images/recetteImages/${recetteImage}`;
+    const image = `src/assets/images/recette-images/${recetteImage}`;
 
     return (
         <CardMedia
