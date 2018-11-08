@@ -14,6 +14,7 @@ const UserAvatar = ({ displayName, email, image, sizeInPixels }) => {
             <img alt='Image de profil'
               className='profile-avatar rounded'
               src={image}
+              style={{ width: sizeInPixels, height: 'auto' }}
             />
             :
             <Gravatar className='rounded'

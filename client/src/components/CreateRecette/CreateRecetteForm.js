@@ -82,19 +82,12 @@ class CreateRecetteForm extends Component {
                                 label={inputText}
                                 multiline={multiline}
                                 name={name}
+                                onChange={this.handleInputChange}
                                 rowsMax='5'
                                 type={type}
                                 defaultValue={this.state[value]}
                                 variant='outlined'
                             />
-                            // <Input key={index}
-                            //     inputText={inputText}
-                            //     multiline={multiline}
-                            //     name={name}
-                            //     onChange={this.handleInputChange}
-                            //     type={type}
-                            //     value={this.state[value]}
-                            // />
                         )
                     })}
 
