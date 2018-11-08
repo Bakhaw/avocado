@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Gravatar from 'react-gravatar';
 import Tooltip from '@material-ui/core/Tooltip';
 
@@ -12,12 +12,12 @@ const UserAvatar = ({ displayName, email, image, sizeInPixels }) => {
           {userHasImage
             ?
             <img alt='Image de profil'
-              className='profile-avatar rounded'
+              className='profile-avatar'
               src={image}
               style={{ width: sizeInPixels, height: 'auto' }}
             />
             :
-            <Gravatar className='rounded'
+            <Gravatar className='profile-avatar'
               default='retro'
               email={email}
               size={sizeInPixels}
