@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react';
 import Typography from '@material-ui/core/Typography';
 
 import EmptyState from '../../../components/EmptyState';
-import CreateRecette from '../../../components/CreateRecette';
+import CreateRecetteModal from '../../../components/CreateRecetteModal';
 import UserRecipes from './UserRecipes';
 
 import { withContext } from '../../../Context/AppStateProvider';
@@ -52,7 +52,7 @@ class ProfileContent extends Component {
           }
           {isUserLoggedOnHisProfile &&
             <div className='profile-content__header__create-recette'>
-              <CreateRecette />
+              <CreateRecetteModal />
             </div>
           }
         </div>

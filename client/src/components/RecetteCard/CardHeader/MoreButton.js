@@ -8,6 +8,8 @@ import MenuItem from '@material-ui/core/MenuItem';
 import Paper from '@material-ui/core/Paper';
 import Popper from '@material-ui/core/Popper';
 
+import UpdateRecetteModal from '../../UpdateRecetteModal';
+
 class MoreButton extends Component {
 
   state = {
@@ -46,7 +48,8 @@ class MoreButton extends Component {
               <Paper>
                 <ClickAwayListener onClickAway={this.closeDropdown}>
                   <MenuList>
-                    <MenuItem>Modifier</MenuItem>
+                    <UpdateRecetteModal />
+                    {/* <MenuItem onClick={this.showUpdateRecetteModal}>Modifier</MenuItem> */}
                     <MenuItem>Supprimer</MenuItem>
                   </MenuList>
                 </ClickAwayListener>

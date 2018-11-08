@@ -10,13 +10,12 @@ import { withContext } from '../../../Context/AppStateProvider';
 class Header extends Component {
 
     render() {
-        const { item } = this.props;
+        const { contextState, item } = this.props;
         const { authorInfos } = this.props.item;
 
-        const userLoggedId = this.props.contextState.userLogged._id;
+        const userLoggedId = contextState.userLogged._id;
         const memberId = authorInfos.id;
 
-        // TODO: put this in <MoreButton /> component
         const isRecipeCreatedByUserLogged = userLoggedId === memberId;
 
         return (

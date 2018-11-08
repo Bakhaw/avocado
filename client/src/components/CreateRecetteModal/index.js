@@ -7,7 +7,7 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 
 import CreateRecetteForm from './CreateRecetteForm';
 
-class CreateRecette extends Component {
+class CreateRecetteModal extends Component {
 
     state = {
         isDialogOpen: false
@@ -53,4 +53,4 @@ class CreateRecette extends Component {
     }
 }
 
-export default CreateRecette;
+export default CreateRecetteModal;
