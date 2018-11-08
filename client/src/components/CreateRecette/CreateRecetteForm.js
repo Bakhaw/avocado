@@ -91,7 +91,8 @@ class CreateRecetteForm extends Component {
                         )
                     })}
 
-                    <div>
+                    {/* !! Ne pas mettre de <Fragment> ici, laisser <div> !! */}
+                    <div> 
                         <label htmlFor='recette-image-input'>
                             Image de votre recette
                             <input id='recette-image-input'
@@ -101,6 +102,8 @@ class CreateRecetteForm extends Component {
                             />
                         </label>
                     </div>
+                    {/* !! Ne pas mettre de <Fragment> ici, laisser <div> !! */}
+
                     <Button className='create-recette__submit-button'
                         type='submit'
                         variant='contained'>
