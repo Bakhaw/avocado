@@ -34,7 +34,7 @@ class RecetteForm extends Component {
     const { handleFormSubmit } = this.props;
     return (
       <div className='create-recette-container'>
-        <form className='create-recette-form' onSubmit={() => handleFormSubmit()}>
+        <form className='create-recette-form' onSubmit={(e) => handleFormSubmit(e, this.state)}>
           {RecetteFormTemplate.map((item, index) => {
             const { inputText, multiline, name, type, value } = item;
             return (
@@ -45,7 +45,7 @@ class RecetteForm extends Component {
                 onChange={this.handleInputChange}
                 rowsMax='5'
                 type={type}
-                defaultValue={[value]}
+                defaultValue={this.state[value]}
                 variant='outlined'
               />
             )

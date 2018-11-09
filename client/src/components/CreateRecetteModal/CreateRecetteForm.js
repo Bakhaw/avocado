@@ -31,7 +31,6 @@ class CreateRecetteForm extends Component {
         params.append('recetteInfos.time', time);
         params.append('recetteInfos.title', title);
 
-
         const { getSelectedUserRecipes } = contextActions;
         try {
             await axios({
