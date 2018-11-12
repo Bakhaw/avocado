@@ -7,7 +7,30 @@ import { withContext } from '../../Context/AppStateProvider';
 
 class CreateRecetteForm extends Component {
 
-    handleFormSubmit = async (e, state) => {
+    // recette state
+    state = {
+        description: '',
+        instructions: '',
+        ingredients: '',
+        recetteImage: '',
+        time: '',
+        title: '',
+    }
+
+    handleInputChange = (e) => {
+        if (e.target.type === 'file') {
+            this.setState({
+                [e.target.name]: e.target.files[0]
+            })
+        } else {
+            this.setState({
+                [e.target.name]: e.target.value
+            });
+        }
+    }
+
+
+    handleFormSubmit = async (e) => {
         // TODO, make this working with <RecetteForm /> Component
         console.log('fired my man')
         e.preventDefault();
@@ -22,7 +45,7 @@ class CreateRecetteForm extends Component {
         params.append('authorInfos.id', _id);
         params.append('authorInfos.authorImage', image);
 
-        const { description, ingredients, instructions, recetteImage, time, title } = state;
+        const { description, ingredients, instructions, recetteImage, time, title } = this.state;
         // ? RecetteInfos
         params.append('recetteInfos.description', description);
         params.append('recetteInfos.ingredients', ingredients);
@@ -48,7 +71,9 @@ class CreateRecetteForm extends Component {
 
     render() {
         return (
-            <RecetteForm handleFormSubmit={this.handleFormSubmit} />
+            <RecetteForm defaultValue={this.state}
+                handleFormSubmit={this.handleFormSubmit}
+                handleInputChange={this.handleInputChange}/>
         )
     }
 }

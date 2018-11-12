@@ -5,36 +5,13 @@ import TextField from '@material-ui/core/TextField';
 import RecetteFormTemplate from './RecetteFormTemplate';
 
 class RecetteForm extends Component {
-
-  // recette state
-  state = {
-    description: '',
-    instructions: '',
-    ingredients: '',
-    recetteImage: '',
-    time: '',
-    title: '',
-  }
-
-  handleInputChange = (e) => {
-    if (e.target.type === 'file') {
-      this.setState({
-        [e.target.name]: e.target.files[0]
-      })
-    } else {
-      this.setState({
-        [e.target.name]: e.target.value
-      });
-    }
-  }
-
   // TODO, make this Component working with <CreateRecetteForm /> Component
 
   render() {
-    const { handleFormSubmit } = this.props;
+    const { defaultValue, handleFormSubmit, handleInputChange } = this.props;
     return (
       <div className='create-recette-container'>
-        <form className='create-recette-form' onSubmit={(e) => handleFormSubmit(e, this.state)}>
+        <form className='create-recette-form' onSubmit={handleFormSubmit}>
           {RecetteFormTemplate.map((item, index) => {
             const { inputText, multiline, name, type, value } = item;
             return (
@@ -42,10 +19,10 @@ class RecetteForm extends Component {
                 label={inputText}
                 multiline={multiline}
                 name={name}
-                onChange={this.handleInputChange}
+                onChange={handleInputChange}
                 rowsMax='5'
                 type={type}
-                defaultValue={this.state[value]}
+                defaultValue={defaultValue[value]}
                 variant='outlined'
               />
             )
