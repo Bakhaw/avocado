@@ -13,22 +13,16 @@ import UpdateRecetteModal from '../../UpdateRecetteModal';
 class MoreButton extends Component {
 
   state = {
-    isDropdownOpen: false
+    isDropdownOpen: false,
   }
 
   toggleDropdown = () => {
     this.setState(state => ({ isDropdownOpen: !state.isDropdownOpen }))
   }
 
-  closeDropdown = event => {
-    if (this.anchorEl.contains(event.target)) {
-      return;
-    }
-
-    this.setState({ isDropdownOpen: false });
-  }
-
   render() {
+    const { item } = this.props;
+
     return (
       <Fragment>
         <IconButton buttonRef={node => {
@@ -46,13 +40,10 @@ class MoreButton extends Component {
               style={{ transformOrigin: placement === 'bottom' ? 'center top' : 'center bottom' }}
             >
               <Paper>
-                <ClickAwayListener onClickAway={this.closeDropdown}>
-                  <MenuList>
-                    <UpdateRecetteModal />
-                    {/* <MenuItem onClick={this.showUpdateRecetteModal}>Modifier</MenuItem> */}
-                    <MenuItem>Supprimer</MenuItem>
-                  </MenuList>
-                </ClickAwayListener>
+                <MenuList>
+                  <UpdateRecetteModal item={item} />
+                  <MenuItem>Supprimer</MenuItem>
+                </MenuList>
               </Paper>
             </Grow>
           )}

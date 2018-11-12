@@ -34,7 +34,7 @@ router.get('/id/:id', (req, res) => {
 
 router.post('/add', upload.single('recetteInfos.recetteImage'), (req, res) => {
     const newRecette = new Recette(req.body);
-    
+
     newRecette.recetteInfos.recetteImage = req.file.filename;
 
     newRecette.save((err, recette) => {
@@ -87,7 +87,9 @@ router.get('/createdBy/:authorId', (req, res) => {
 
 router.post('/update/:id', upload.single('recetteInfos.recetteImage'), (req, res) => {
     const newRecipe = req.body;
-    newRecipe['recetteInfos.recetteImage'] = req.file.filename;
+    if (req.file) {
+        newRecipe['recetteInfos.recetteImage'] = req.file.filename;
+    }
 
     Recette.findByIdAndUpdate(req.params.id, newRecipe, (err, recette) => {
         return err ? res.send(err) : res.json(`${recette.recetteInfos.title} updated with success!`);

@@ -6,7 +6,7 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import MenuItem from '@material-ui/core/MenuItem';
 
-import CreateRecetteForm from '../CreateRecetteModal/CreateRecetteForm';
+import UpdateRecetteForm from './UpdateRecetteForm';
 
 class UpdateRecetteModal extends Component {
 
@@ -22,47 +22,13 @@ class UpdateRecetteModal extends Component {
         this.setState({ isDialogOpen: false });
     }
 
-    handleFormSubmit = async (e, state) => {
-        // TODO, make this working with <RecetteForm /> Component
-        console.log('fired my man')
-        e.preventDefault();
-
-        const params = new FormData();
-        const { closeDialog, contextActions, contextState } = this.props;
-        const { _id, displayName, email, image } = contextState.userLogged;
-
-        // ? AuthorInfos
-        params.append('authorInfos.displayName', displayName);
-        params.append('authorInfos.email', email);
-        params.append('authorInfos.id', _id);
-        params.append('authorInfos.authorImage', image);
-
-        const { description, ingredients, instructions, recetteImage, time, title } = state;
-        // ? RecetteInfos
-        params.append('recetteInfos.description', description);
-        params.append('recetteInfos.ingredients', ingredients);
-        params.append('recetteInfos.instructions', instructions);
-        params.append('recetteInfos.recetteImage', recetteImage);
-        params.append('recetteInfos.time', time);
-        params.append('recetteInfos.title', title);
-
-        const { getSelectedUserRecipes } = contextActions;
-        try {
-            await axios({
-                method: 'post',
-                url: '/recipes/update',
-                data: params
-            });
-
-            await getSelectedUserRecipes();
-            closeDialog();
-        } catch (err) {
-            console.log(err)
-        }
-    }
+    componentWillUnmount(){
+        console.log('unmounted');
+    } 
 
     render() {
         const { isDialogOpen } = this.state;
+        const { item } = this.props;
 
         return (
             <Fragment>
@@ -76,7 +42,8 @@ class UpdateRecetteModal extends Component {
                     open={isDialogOpen}>
                     <DialogTitle id='dialog-title'>Ajouter une recette</DialogTitle>
                     <DialogContent>
-                        <CreateRecetteForm handleFormSubmit={this.handleFormSubmit} />
+                        <UpdateRecetteForm closeDialog={this.closeDialog}
+                            item={item} />
                     </DialogContent>
                     <DialogActions>
                         <Button className='create-recette__close-button'

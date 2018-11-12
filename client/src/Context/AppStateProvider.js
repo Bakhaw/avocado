@@ -118,9 +118,8 @@ export default class AppStateProvider extends Component {
 
   handleRecetteFormInputChange = (e) => {
     let newValue;
-
+    
     if (e.target.type === 'file') {
-      console.log('File!');
       newValue = e.target.files[0]
     } else {
       newValue = e.target.value;

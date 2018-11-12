@@ -21,7 +21,7 @@ class Header extends Component {
         return (
             <Fragment>
                 <CardHeader
-                    action={isRecipeCreatedByUserLogged ? <MoreButton /> : null}
+                    action={isRecipeCreatedByUserLogged ? <MoreButton item={item}/> : null}
                     avatar={<Avatar item={item} />}
                     title={<Title item={item} />}
                     // subheader={date}

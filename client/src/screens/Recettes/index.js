@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 
 import LayoutContainer from '../../components/LayoutContainer';
 import RecetteCard from '../../components/RecetteCard';
