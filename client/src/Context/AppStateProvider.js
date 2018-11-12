@@ -20,6 +20,14 @@ export default class AppStateProvider extends Component {
     selectedUserRecipes: [],
     recipes: [],
     favorites: [],
+    recetteForm: {
+      description: '',
+      instructions: '',
+      ingredients: '',
+      recetteImage: '',
+      time: '',
+      title: '',
+    }
   }
 
   toggleAppLoading = async (bool) => {
@@ -108,11 +116,29 @@ export default class AppStateProvider extends Component {
     await this.setState({ selectedUserRecipes });
   }
 
+  handleRecetteFormInputChange = (e) => {
+    let newValue;
+
+    if (e.target.type === 'file') {
+      console.log('File!');
+      newValue = e.target.files[0]
+    } else {
+      newValue = e.target.value;
+    }
+
+    this.setState({
+      recetteForm: {
+        ...this.state.recetteForm,
+        [e.target.name]: newValue
+      }
+    });
+  }
+
   render() {
     const {
       isLeftMenuOpen, appLoading, isUserLogged, userLogged,
       selectedUserProfile, selectedUserRecipes,
-      recipes, favorites
+      recipes, favorites, recetteForm
     } = this.state;
     return (
       <Provider value={{
@@ -124,7 +150,8 @@ export default class AppStateProvider extends Component {
           selectedUserProfile,
           selectedUserRecipes,
           recipes,
-          favorites
+          favorites,
+          recetteForm
         },
         contextActions: {
           toggleAppLoading: this.toggleAppLoading,
@@ -135,7 +162,8 @@ export default class AppStateProvider extends Component {
           getSelectedUserRecipes: this.getSelectedUserRecipes,
           signOut: this.signOut,
           getAllRecipes: this.getAllRecipes,
-          getAllFavorites: this.getAllFavorites
+          getAllFavorites: this.getAllFavorites,
+          handleRecetteFormInputChange: this.handleRecetteFormInputChange
         }
       }}>
         {this.props.children}

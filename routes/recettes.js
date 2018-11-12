@@ -85,9 +85,12 @@ router.get('/createdBy/:authorId', (req, res) => {
     });
 })
 
-router.post('/update/:id', (req, res) => {
-    Recette.findByIdAndUpdate(req.params.id, req.body, (err, recette) => {
-        err ? res.send(err) : res.json(`${recette.title} updated with success!`);
+router.post('/update/:id', upload.single('recetteInfos.recetteImage'), (req, res) => {
+    const newRecipe = req.body;
+    newRecipe['recetteInfos.recetteImage'] = req.file.filename;
+
+    Recette.findByIdAndUpdate(req.params.id, newRecipe, (err, recette) => {
+        return err ? res.send(err) : res.json(`${recette.recetteInfos.title} updated with success!`);
     })
 })
 
