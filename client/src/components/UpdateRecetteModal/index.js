@@ -22,10 +22,6 @@ class UpdateRecetteModal extends Component {
         this.setState({ isDialogOpen: false });
     }
 
-    componentWillUnmount(){
-        console.log('unmounted');
-    } 
-
     render() {
         const { isDialogOpen } = this.state;
         const { item } = this.props;
@@ -46,7 +42,7 @@ class UpdateRecetteModal extends Component {
                             item={item} />
                     </DialogContent>
                     <DialogActions>
-                        <Button className='create-recette__close-button'
+                        <Button className='recette-dialog__close-button'
                             onClick={this.closeDialog}
                             variant='text'>
                             Fermer

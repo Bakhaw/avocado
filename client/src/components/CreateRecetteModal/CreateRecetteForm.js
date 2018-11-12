@@ -7,13 +7,41 @@ import { withContext } from '../../Context/AppStateProvider';
 
 class CreateRecetteForm extends Component {
 
+    state = {
+        recipe: {
+            description: '',
+            instructions: '',
+            ingredients: '',
+            recetteImage: '',
+            time: '',
+            title: '',
+        }
+    }
+
+    handleInputChange = (e) => {
+        let newValue;
+
+        if (e.target.type === 'file') {
+            newValue = e.target.files[0]
+        } else {
+            newValue = e.target.value;
+        }
+
+        this.setState({
+            recipe: {
+                ...this.state.recipe,
+                [e.target.name]: newValue
+            }
+        });
+    }
+
     handleFormSubmit = async (e) => {
         // TODO, make this working with <RecetteForm /> Component
         e.preventDefault();
 
         const params = new FormData();
         const { closeDialog, contextActions, contextState } = this.props;
-        const { recetteForm, userLogged } = contextState;
+        const { userLogged } = contextState;
         const { _id, displayName, email, image } = userLogged;
 
         // ? AuthorInfos
@@ -22,7 +50,7 @@ class CreateRecetteForm extends Component {
         params.append('authorInfos.id', _id);
         params.append('authorInfos.authorImage', image);
 
-        const { description, ingredients, instructions, recetteImage, time, title } = recetteForm;
+        const { description, ingredients, instructions, recetteImage, time, title } = this.state.recipe;
         // ? RecetteInfos
         params.append('recetteInfos.description', description);
         params.append('recetteInfos.ingredients', ingredients);
@@ -48,7 +76,10 @@ class CreateRecetteForm extends Component {
 
     render() {
         return (
-            <RecetteForm handleFormSubmit={this.handleFormSubmit}/>
+            <RecetteForm handleFormSubmit={this.handleFormSubmit}
+                handleInputChange={this.handleInputChange}
+                recetteFormState={this.state.recipe}
+                submitButtonText='Ajouter une recette' />
         )
     }
 }

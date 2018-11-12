@@ -3,13 +3,10 @@ import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 
 import RecetteFormTemplate from './RecetteFormTemplate';
-import { withContext } from '../../Context/AppStateProvider';
 
-const RecetteForm = ({ contextActions, contextState, handleFormSubmit }) => {
-  // TODO, make this Component working with <UpdateRecetteForm /> Component
-  const { recetteForm } = contextState;
-  const { handleRecetteFormInputChange } = contextActions;
+// TODO: handle les erreurs de form (input vide, time (String à la place de Number) etc ..)
 
+const RecetteForm = ({ handleFormSubmit, handleInputChange, recetteFormState, submitButtonText }) => {
   return (
     <div className='create-recette-container'>
       <form className='create-recette-form' onSubmit={handleFormSubmit}>
@@ -17,13 +14,13 @@ const RecetteForm = ({ contextActions, contextState, handleFormSubmit }) => {
           const { inputText, multiline, name, type, value } = item;
           return (
             <TextField key={index}
-              defaultValue={recetteForm[value]}
               label={inputText}
               multiline={multiline}
               name={name}
-              onChange={handleRecetteFormInputChange}
+              onChange={handleInputChange}
               rowsMax='5'
               type={type}
+              value={recetteFormState[value]}
               variant='outlined'
             />
           )
@@ -33,24 +30,24 @@ const RecetteForm = ({ contextActions, contextState, handleFormSubmit }) => {
         <div>
           <label htmlFor='recette-image-input'>
             Image de votre recette
-                  <input id='recette-image-input'
+                    <input id='recette-image-input'
               name='recetteImage'
-              onChange={handleRecetteFormInputChange}
+              onChange={handleInputChange}
               type='file'
             />
           </label>
         </div>
         {/* !! Ne pas mettre de <Fragment> ici, laisser <div> !! */}
 
-        <Button className='create-recette__submit-button'
+        <Button className='recette-dialog__submit-button'
           type='submit'
           variant='contained'>
-          Ajouter une recette
-          </Button>
+          {submitButtonText}
+        </Button>
       </form>
 
     </div>
   )
 }
 
-export default withContext(RecetteForm);
+export default RecetteForm;

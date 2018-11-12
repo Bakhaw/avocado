@@ -26,7 +26,7 @@ class CreateRecetteModal extends Component {
 
         return (
             <Fragment>
-                <Button className='create-recette__open-button'
+                <Button className='recette-dialog__open-button'
                     onClick={this.openDialog}
                     variant='contained'>
                     Ajouter une recette
@@ -41,7 +41,7 @@ class CreateRecetteModal extends Component {
                         <CreateRecetteForm closeDialog={this.closeDialog} />
                     </DialogContent>
                     <DialogActions>
-                        <Button className='create-recette__close-button'
+                        <Button className='recette-dialog__close-button'
                             onClick={this.closeDialog}
                             variant='text'>
                             Fermer

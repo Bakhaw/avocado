@@ -63,17 +63,10 @@ router.post('/like/:recetteId/:userId', (req, res) => {
     });
 });
 
-// ? Autorise l'user à supprimer seulement SES recettes à lui
-router.get('/delete/:authorId/:recetteId', (req, res) => {
-    Recette.findById(req.params.recetteId, (err, recette) => {
-        if (err) return console.log(err);
-        if (recette.authorId === req.params.authorId) {
-            Recette.findByIdAndRemove(req.params.recetteId, (err, recette) => {
-                err ? res.send(err) : res.json(`${recette.title} deleted with success!`);
-            });
-        } else {
-            res.json({ message: "Vous n'avez pas les droits" })
-        }
+// ? Supprimer une recette
+router.get('/delete/:recetteId', (req, res) => {
+    Recette.findByIdAndRemove(req.params.recetteId, (err, recette) => {
+        return err ? res.send(err) : res.json(`${recette.recetteInfos.title} deleted with success!`);
     });
 });
 
@@ -86,6 +79,7 @@ router.get('/createdBy/:authorId', (req, res) => {
 })
 
 router.post('/update/:id', upload.single('recetteInfos.recetteImage'), (req, res) => {
+    console.log('fired', req.body)
     const newRecipe = req.body;
     if (req.file) {
         newRecipe['recetteInfos.recetteImage'] = req.file.filename;

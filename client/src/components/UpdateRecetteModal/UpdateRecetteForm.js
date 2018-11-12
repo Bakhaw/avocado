@@ -7,14 +7,53 @@ import { withContext } from '../../Context/AppStateProvider';
 
 class UpdateRecetteForm extends Component {
 
+  state = {
+    recipe: {
+      description: '',
+      instructions: '',
+      ingredients: '',
+      recetteImage: '',
+      time: '',
+      title: '',
+    }
+  }
+
+  componentDidMount() {
+    this.getCurrentRecipe();
+  }
+
+  getCurrentRecipe = async () => {
+    const recetteId = this.props.item._id;
+    const request = await axios.get(`/recipes/id/${recetteId}`);
+    const recipe = await request.data.recetteInfos;
+    this.setState({ recipe });
+  }
+
+  handleInputChange = (e) => {
+    let newValue;
+
+    if (e.target.type === 'file') {
+      newValue = e.target.files[0]
+    } else {
+      newValue = e.target.value;
+    }
+
+    this.setState({
+      recipe: {
+        ...this.state.recipe,
+        [e.target.name]: newValue
+      }
+    });
+  }
+
+
   handleFormSubmit = async (e) => {
     e.preventDefault();
 
     const params = new FormData();
-    const { closeDialog, contextActions, contextState } = this.props;
-    const { recetteForm } = contextState;
+    const { closeDialog, contextActions } = this.props;
 
-    const { description, ingredients, instructions, recetteImage, time, title } = recetteForm;
+    const { description, ingredients, instructions, recetteImage, time, title } = this.state.recipe;
 
     // ? RecetteInfos
     params.append('recetteInfos.description', description);
@@ -26,8 +65,6 @@ class UpdateRecetteForm extends Component {
 
     const { getSelectedUserRecipes } = contextActions;
     const recetteId = this.props.item._id;
-    
-    console.log({ recetteId });
 
     // TODO, make this working with <RecetteForm /> Component, FIND RECETTE ID 
     try {
@@ -46,7 +83,10 @@ class UpdateRecetteForm extends Component {
 
   render() {
     return (
-      <RecetteForm handleFormSubmit={this.handleFormSubmit} />
+      <RecetteForm handleFormSubmit={this.handleFormSubmit}
+        handleInputChange={this.handleInputChange}
+        recetteFormState={this.state.recipe}
+        submitButtonText='Enregistrer les changements' />
     )
   }
 }

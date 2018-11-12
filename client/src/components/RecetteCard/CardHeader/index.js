@@ -17,11 +17,14 @@ class Header extends Component {
         const memberId = authorInfos.id;
 
         const isRecipeCreatedByUserLogged = userLoggedId === memberId;
+        const userIsOnProfilePage = window.location.href.includes('#/profil');
+
+        const displayMoreButton = isRecipeCreatedByUserLogged && userIsOnProfilePage;
 
         return (
             <Fragment>
                 <CardHeader
-                    action={isRecipeCreatedByUserLogged ? <MoreButton item={item}/> : null}
+                    action={displayMoreButton ? <MoreButton item={item}/> : null}
                     avatar={<Avatar item={item} />}
                     title={<Title item={item} />}
                     // subheader={date}

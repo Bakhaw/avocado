@@ -1,13 +1,16 @@
 import React, { Component, Fragment } from 'react';
 import IconButton from '@material-ui/core/IconButton';
 import MoreIcon from '@material-ui/icons/MoreVert';
+
+// TODO fix bug avec ce truc, quand on ouvre une modal, sa se Unmount, il faut pas
 import ClickAwayListener from '@material-ui/core/ClickAwayListener';
+
 import Grow from '@material-ui/core/Grow';
 import MenuList from '@material-ui/core/MenuList';
-import MenuItem from '@material-ui/core/MenuItem';
 import Paper from '@material-ui/core/Paper';
 import Popper from '@material-ui/core/Popper';
 
+import DeleteRecetteModal from '../../DeleteRecetteModal';
 import UpdateRecetteModal from '../../UpdateRecetteModal';
 
 class MoreButton extends Component {
@@ -42,7 +45,7 @@ class MoreButton extends Component {
               <Paper>
                 <MenuList>
                   <UpdateRecetteModal item={item} />
-                  <MenuItem>Supprimer</MenuItem>
+                  <DeleteRecetteModal item={item}/>
                 </MenuList>
               </Paper>
             </Grow>
