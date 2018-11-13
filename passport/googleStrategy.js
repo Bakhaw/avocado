@@ -14,7 +14,8 @@ const GoogleStrategy = new Strategy({
         else {
             new User({
                 displayName: profile.displayName,
-                image: profile._json.image.url,
+                image: profile._json.image.url.slice(0, -6),
+                // ? slice() -> Remove le "?sz=50" à la fin pour récupérer la taille originale de l'image
                 email: profile._json.emails[0].value,
                 googleId: profile.id
             }).save().then(newUser => done(null, newUser));
