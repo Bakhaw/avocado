@@ -33,6 +33,10 @@ const UserSchema = new Schema({
         type: String,
         required: false
     },
+    twitterId: {
+        type: String,
+        required: false
+    },
     favoritesId: [{
         type: Schema.Types.ObjectId,
         ref: 'Recette',

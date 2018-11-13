@@ -72,12 +72,14 @@ router.post('/logout', (req, res) => {
     }
 })
 
+// TODO: HANDLE FAILURE LOGIN
 router.get('/google', passport.authenticate('google', { scope: ['profile', 'email'] }));
-
 router.get('/google/callback', passport.authenticate('google'), (req, res) => res.redirect('/#/accueil'));
 
-router.get('/facebook/', passport.authenticate('facebook'));
-
+router.get('/facebook', passport.authenticate('facebook'));
 router.get('/facebook/callback', passport.authenticate('facebook'), (req, res) => res.redirect('/#/accueil'));
+
+router.get('/twitter', passport.authenticate('twitter'));
+router.get('/twitter/callback', passport.authenticate('twitter'), (req, res) => res.redirect('/#/accueil'))
 
 export default router;

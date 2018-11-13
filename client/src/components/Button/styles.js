@@ -43,6 +43,21 @@ const styles = () => ({
         height: '50px',
         borderRadius: '50px',
         marginBottom: '20px',
+    },
+    twitter: {
+        borderRadius: '50px',
+        background: 'linear-gradient(to right, #3AA1F2, #2d87cc)',
+        width: '300px',
+        height: '50px',
+        boxShadow: '#AFC2C9 0px 5px 15px',
+        color: '#fff',
+        fontWeight: 'bold',
+        letterSpacing: '1px',
+        fontSize: '17px',
+        borderRadius: '50px',
+        height: '50px',
+        borderRadius: '50px',
+        marginBottom: '20px',
     }
   });
 

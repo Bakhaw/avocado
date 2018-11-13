@@ -3,6 +3,7 @@ import passport from 'passport';
 import FacebookStrategy from './facebookStrategy';
 import GoogleStrategy from './googleStrategy';
 import LocalStrategy from './localStrategy';
+import TwitterStrategy from './twitterStrategy';
 
 import User from '../models/User';
 
@@ -14,8 +15,9 @@ passport.deserializeUser((id, done) => {
     User.findOne({ _id: id }, (err, user) => done(null, user));
 });
 
-passport.use(LocalStrategy);
-passport.use(GoogleStrategy);
 passport.use(FacebookStrategy);
+passport.use(GoogleStrategy);
+passport.use(LocalStrategy);
+passport.use(TwitterStrategy);
 
 export default passport;
