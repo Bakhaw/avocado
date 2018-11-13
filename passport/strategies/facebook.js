@@ -11,7 +11,6 @@ const FacebookStrategy = new Strategy({
     profileFields,
 }, (accessToken, refreshToken, profile, done) => {
     User.findOne({ facebookId: profile.id }).then(currentUser => {
-        console.log('USER !!!', profile)
         if (currentUser) done(null, currentUser);
         else {
             new User({

@@ -1,7 +1,9 @@
 import { Router } from 'express';
 import multer from 'multer';
 import path from 'path';
+
 import Recette from '../models/Recette';
+import User from '../models/User';
 
 const router = Router();
 
@@ -34,11 +36,22 @@ router.get('/id/:id', (req, res) => {
 
 router.post('/add', upload.single('recetteInfos.recetteImage'), (req, res) => {
     const newRecette = new Recette(req.body);
+    const userId = newRecette.authorInfos.id;
 
     newRecette.recetteInfos.recetteImage = req.file.filename;
-
     newRecette.save((err, recette) => {
-        err ? res.send(err) : res.json(`${recette.title} added with success!`);
+        if (err) {
+            res.send(err);
+        } else {
+            User.findById(userId, (err, user) => {
+                if (err) return console.log(err);
+
+                user.library.push(newRecette);
+                user.save();
+            });
+
+            res.json(`${recette.recetteInfos.title} added with success!`);
+        }
     })
 });
 
@@ -71,10 +84,9 @@ router.get('/delete/:recetteId', (req, res) => {
 });
 
 // TODO Renvoie les recettes crées par l'user
-router.get('/createdBy/:authorId', (req, res) => {
-    const query = { 'authorInfos.id': req.params.authorId };
-    Recette.find(query, (err, recettes) => {
-        err ? console.log(err) : res.json(recettes)
+router.get('/createdBy/:userId', (req, res) => {
+    User.findById(req.params.userId, { library: 1, _id: 0 }, (err, library) => {
+        return err ? console.log(err) : res.json(library)
     });
 })
 

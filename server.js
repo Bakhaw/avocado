@@ -10,7 +10,6 @@ import passport from './passport';
 // Routes
 import authRouter from './routes/auth';
 import favRouter from './routes/favoris';
-import libRouter from './routes/library';
 import productsRouter from './routes/products';
 import recettesRouter from './routes/recettes';
 import usersRouter from './routes/users';
@@ -35,6 +34,5 @@ app.use('/products', productsRouter);
 app.use('/recipes', recettesRouter);
 app.use('/favoris', favRouter);
 app.use('/users', usersRouter);
-app.use('/library', libRouter);
 
 app.listen(config.port, () => console.log(`Avocado back running on port ${config.port}...`));
