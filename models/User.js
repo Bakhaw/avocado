@@ -37,6 +37,10 @@ const UserSchema = new Schema({
         type: String,
         required: false
     },
+    instagramId: {
+        type: String,
+        required: false
+    },
     favoritesId: [{
         type: Schema.Types.ObjectId,
         ref: 'Recette',

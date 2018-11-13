@@ -20,6 +20,9 @@ class ChooseRegisterType extends Component {
         <a href='/auth/twitter'>
           <Button buttonText='Twitter' twitter={true}/>  
         </a>
+        <a href='/auth/instagram'>
+          <Button buttonText='Instagram' instagram={true}/>  
+        </a>
       </div>
     );
   }

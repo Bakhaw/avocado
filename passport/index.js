@@ -2,6 +2,7 @@ import passport from 'passport';
 
 import FacebookStrategy from './facebookStrategy';
 import GoogleStrategy from './googleStrategy';
+import InstagramStrategy from './instagramStrategy';
 import LocalStrategy from './localStrategy';
 import TwitterStrategy from './twitterStrategy';
 
@@ -17,6 +18,7 @@ passport.deserializeUser((id, done) => {
 
 passport.use(FacebookStrategy);
 passport.use(GoogleStrategy);
+passport.use(InstagramStrategy);
 passport.use(LocalStrategy);
 passport.use(TwitterStrategy);
 

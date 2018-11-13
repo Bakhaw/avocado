@@ -6,7 +6,7 @@ import ChevronRight from '@material-ui/icons/ChevronRight';
 import styles from './styles';
 
 // TODO repasser sur ce Component
-const buttonStyle = (classes, facebook, google, twitter) => {
+const buttonStyle = (classes, facebook, google, twitter, instagram) => {
   let type = '';
 
   if (facebook) {
@@ -15,6 +15,8 @@ const buttonStyle = (classes, facebook, google, twitter) => {
     type = classes.google
   } else if (twitter) {
     type = classes.twitter
+  } else if (instagram) {
+    type = classes.instagram
   } else {
     type = classes.basic
   }
@@ -23,7 +25,7 @@ const buttonStyle = (classes, facebook, google, twitter) => {
 }
 
 const CustomButton = (props) => {
-  const { buttonText, chevronRight, classes, disabled, facebook, google, onClick, type, twitter } = props;
+  const { buttonText, chevronRight, classes, disabled, facebook, google, instagram, onClick, type, twitter } = props;
 
   return (
     <div>
@@ -31,7 +33,7 @@ const CustomButton = (props) => {
               disabled={disabled}
               onClick={onClick}
               type={type}
-              className={buttonStyle(classes, facebook, google, twitter) + ' button'}>
+              className={buttonStyle(classes, facebook, google, twitter, instagram) + ' button'}>
         <p>{buttonText}</p>
         {chevronRight && <ChevronRight className={classes.rightIcon} />}
       </Button>
