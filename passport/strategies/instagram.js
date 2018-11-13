@@ -1,6 +1,6 @@
 import Strategy from 'passport-instagram';
-import User from '../models/User';
-import keys from './keys';
+import User from '../../models/User';
+import keys from '../keys';
 
 const { callbackURL, clientID, clientSecret } = keys.instagram;
 

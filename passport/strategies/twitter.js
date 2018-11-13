@@ -1,6 +1,6 @@
 import Strategy from 'passport-twitter';
-import User from '../models/User';
-import keys from './keys';
+import User from '../../models/User';
+import keys from '../keys';
 
 const { callbackURL, consumerKey, consumerSecret } = keys.twitter;
 

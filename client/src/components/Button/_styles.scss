@@ -1,4 +1,13 @@
 .button {
+  border-radius: 50px !important;
+  background: linear-gradient(to right, #43cea2, #185a9d) !important;
+  width: 300px;
+  height: 50px;
+  box-shadow: #AFC2C9 0px 5px 15px !important;
+  color: #fff !important;
+  letter-spacing: 1px;
+  font-size: 17px !important;
+  margin-bottom: 20px !important;
   span:first-child {
     display: flex;
     justify-content: space-between;
@@ -13,6 +22,31 @@
       }
     }
   }
+}
+
+.google {
+  background-color: #c33219 !important;
+  background: linear-gradient(to right, #e64522, #c33219) !important;
+}
+
+.facebook {
+  background-color: #2b4170 !important;
+  background: linear-gradient(to right, #3b5998, #2b4170) !important;
+}
+
+.twitter {
+  background-color: #0081ce !important;
+  background: linear-gradient(to right, #00aced, #0081ce) !important;
+}
+
+.instagram {
+  background-color: #f09433 !important;
+  background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%) !important;
+}
+
+.github {
+  background-color: #333 !important;
+  background: linear-gradient(to right, #333,#24282E) !important;
 }
 
 .roundedButton {

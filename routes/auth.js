@@ -85,4 +85,7 @@ router.get('/twitter/callback', passport.authenticate('twitter'), (req, res) => 
 router.get('/instagram', passport.authenticate('instagram'));
 router.get('/instagram/callback', passport.authenticate('instagram'), (req, res) => res.redirect('/#/accueil'));
 
+router.get('/github', passport.authenticate('github'));
+router.get('/github/callback', passport.authenticate('github'), (req, res) => res.redirect('/#/accueil'));
+
 export default router;

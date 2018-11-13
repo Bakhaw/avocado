@@ -1,6 +1,6 @@
 import { Strategy } from 'passport-facebook';
-import User from '../models/User';
-import keys from './keys';
+import User from '../../models/User';
+import keys from '../keys';
 
 const { clientID, clientSecret, callbackURL, profileFields } = keys.facebook;
 

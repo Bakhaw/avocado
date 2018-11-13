@@ -1,31 +1,52 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 import Button from '../../Button';
 import Header from './Header';
 
-class ChooseRegisterType extends Component {
-  render() {
-    const { handlePrev, handleNext } = this.props;
-    
-    return (
-      <div className='choose-register-type'>
-        <Header title='ENREGISTREZ VOUS AVEC' chevronLeft handlePrev={handlePrev}/>
-        <Button buttonText='Email' onClick={handleNext}/>
-        <a href='/auth/google'>
-          <Button buttonText='Google' google={true}/>
-        </a>
-        <a href='/auth/facebook'>
-          <Button buttonText='Facebook' facebook={true}/>  
-        </a>
-        <a href='/auth/twitter'>
-          <Button buttonText='Twitter' twitter={true}/>  
-        </a>
-        <a href='/auth/instagram'>
-          <Button buttonText='Instagram' instagram={true}/>  
-        </a>
-      </div>
-    );
-  }
+const buttonsArray = [
+  {
+    href: '/auth/google',
+    style: 'google',
+    text: 'Google',
+  },
+  {
+    href: '/auth/facebook',
+    style: 'facebook',
+    text: 'Facebook',
+  },
+  {
+    href: '/auth/twitter',
+    style: 'twitter',
+    text: 'Twitter',
+  },
+  {
+    href: '/auth/instagram',
+    style: 'instagram',
+    text: 'Instagram',
+  },
+  {
+    href: '/auth/github',
+    style: 'github',
+    text: 'Github',
+  },
+];
+
+const ChooseRegisterType = ({ handlePrev, handleNext }) => {
+  return (
+    <div className='choose-register-type'>
+      <Header title='ENREGISTREZ VOUS AVEC' chevronLeft handlePrev={handlePrev} />
+      <Button buttonText='Email' onClick={handleNext} />
+
+      {buttonsArray.map((button, index) => {
+        const { href, style, text } = button;
+        return (
+          <a key={index} href={href}>
+            <Button buttonStyle={style} buttonText={text} />
+          </a>
+        )
+      })}
+    </div>
+  );
 }
 
 export default ChooseRegisterType;

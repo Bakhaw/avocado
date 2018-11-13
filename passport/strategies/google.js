@@ -1,6 +1,6 @@
 import Strategy from 'passport-google-oauth20';
-import User from '../models/User';
-import keys from './keys';
+import User from '../../models/User';
+import keys from '../keys';
 
 const { clientID, clientSecret, callbackURL } = keys.google;
 

@@ -1,4 +1,4 @@
-import User from '../models/User';
+import User from '../../models/User';
 import { Strategy } from 'passport-local';
 
 const LocalStrategy = new Strategy(

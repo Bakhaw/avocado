@@ -1,10 +1,11 @@
 import passport from 'passport';
 
-import FacebookStrategy from './facebookStrategy';
-import GoogleStrategy from './googleStrategy';
-import InstagramStrategy from './instagramStrategy';
-import LocalStrategy from './localStrategy';
-import TwitterStrategy from './twitterStrategy';
+import FacebookStrategy from './strategies/facebook';
+import GithubStrategy from './strategies/github';
+import GoogleStrategy from './strategies/google';
+import InstagramStrategy from './strategies/instagram';
+import LocalStrategy from './strategies/local';
+import TwitterStrategy from './strategies/twitter';
 
 import User from '../models/User';
 
@@ -17,6 +18,7 @@ passport.deserializeUser((id, done) => {
 });
 
 passport.use(FacebookStrategy);
+passport.use(GithubStrategy);
 passport.use(GoogleStrategy);
 passport.use(InstagramStrategy);
 passport.use(LocalStrategy);
