@@ -29,6 +29,11 @@ const buttonsArray = [
     style: 'github',
     text: 'Github',
   },
+  {
+    href: '/auth/twitch',
+    style: 'twitch',
+    text: 'Twitch',
+  },
 ];
 
 const ChooseRegisterType = ({ handlePrev, handleNext }) => {

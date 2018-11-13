@@ -1,12 +1,9 @@
 import React, { Fragment } from 'react';
 import classNames from 'classnames';
 import Button from '@material-ui/core/Button';
-import { withStyles } from '@material-ui/core/styles';
 import ChevronRight from '@material-ui/icons/ChevronRight';
 
-import styles from './styles';
-
-const CustomButton = ({ buttonText, buttonStyle, chevronRight, classes, disabled, onClick, type }) => {
+const CustomButton = ({ buttonText, buttonStyle, chevronRight, disabled, onClick, type }) => {
   return (
     <Fragment>
       <Button variant='contained'
@@ -14,14 +11,14 @@ const CustomButton = ({ buttonText, buttonStyle, chevronRight, classes, disabled
         onClick={onClick}
         type={type}
         className={classNames(
-            buttonStyle,
-            'button'
-          )}>
+          'button',
+          buttonStyle,
+        )}>
         <p>{buttonText}</p>
-        {chevronRight && <ChevronRight className={classes.rightIcon} />}
+        {chevronRight && <ChevronRight />}
       </Button>
     </Fragment>
   );
 }
 
-export default withStyles(styles)(CustomButton);
+export default CustomButton;

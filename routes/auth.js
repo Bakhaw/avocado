@@ -73,19 +73,16 @@ router.post('/logout', (req, res) => {
 })
 
 // TODO: HANDLE FAILURE LOGIN
-router.get('/google', passport.authenticate('google', { scope: ['profile', 'email'] }));
-router.get('/google/callback', passport.authenticate('google'), (req, res) => res.redirect('/#/accueil'));
+const authenticateWithStrategy = (strategy, authRoute, callbackRoute, scopes) => {
+    router.get(authRoute, passport.authenticate(strategy, scopes));
+    router.get(callbackRoute, passport.authenticate(strategy), (req, res) => res.redirect('/#/accueil'));
+}
 
-router.get('/facebook', passport.authenticate('facebook'));
-router.get('/facebook/callback', passport.authenticate('facebook'), (req, res) => res.redirect('/#/accueil'));
-
-router.get('/twitter', passport.authenticate('twitter'));
-router.get('/twitter/callback', passport.authenticate('twitter'), (req, res) => res.redirect('/#/accueil'))
-
-router.get('/instagram', passport.authenticate('instagram'));
-router.get('/instagram/callback', passport.authenticate('instagram'), (req, res) => res.redirect('/#/accueil'));
-
-router.get('/github', passport.authenticate('github'));
-router.get('/github/callback', passport.authenticate('github'), (req, res) => res.redirect('/#/accueil'));
+authenticateWithStrategy('google', '/google', '/google/callback', { scope: ['profile', 'email'] });
+authenticateWithStrategy('facebook', '/facebook', '/facebook/callback');
+authenticateWithStrategy('twitter', '/twitter', '/twitter/callback');
+authenticateWithStrategy('instagram', '/instagram', '/instagram/callback');
+authenticateWithStrategy('github', '/github', '/github/callback');
+authenticateWithStrategy('twitch', '/twitch', '/twitch/callback');
 
 export default router;
