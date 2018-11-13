@@ -51,7 +51,7 @@ class UpdateRecetteForm extends Component {
     e.preventDefault();
 
     const params = new FormData();
-    const { closeDialog, contextActions } = this.props;
+    const { closeDialog, contextActions, item } = this.props;
 
     const { description, ingredients, instructions, recetteImage, time, title } = this.state.recipe;
 
@@ -64,7 +64,7 @@ class UpdateRecetteForm extends Component {
     params.append('recetteInfos.title', title);
 
     const { getSelectedUserRecipes } = contextActions;
-    const recetteId = this.props.item._id;
+    const recetteId = item._id;
 
     // TODO, make this working with <RecetteForm /> Component, FIND RECETTE ID 
     try {

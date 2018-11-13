@@ -20,6 +20,7 @@ class UpdateRecetteModal extends Component {
 
     closeDialog = () => {
         this.setState({ isDialogOpen: false });
+        this.props.toggleDropdown();
     }
 
     render() {

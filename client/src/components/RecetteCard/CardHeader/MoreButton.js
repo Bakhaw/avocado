@@ -44,7 +44,7 @@ class MoreButton extends Component {
             >
               <Paper>
                 <MenuList>
-                  <UpdateRecetteModal item={item} />
+                  <UpdateRecetteModal item={item} toggleDropdown={this.toggleDropdown} />
                   <DeleteRecetteModal item={item}/>
                 </MenuList>
               </Paper>
