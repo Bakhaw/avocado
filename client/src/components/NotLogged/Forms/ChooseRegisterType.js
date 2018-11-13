@@ -34,6 +34,11 @@ const buttonsArray = [
     style: 'twitch',
     text: 'Twitch',
   },
+  {
+    href: '/auth/spotify',
+    style: 'spotify',
+    text: 'Spotify',
+  },
 ];
 
 const ChooseRegisterType = ({ handlePrev, handleNext }) => {

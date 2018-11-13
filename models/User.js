@@ -49,6 +49,10 @@ const UserSchema = new Schema({
         type: String,
         required: false
     },
+    spotifyId: {
+        type: String,
+        required: false
+    },
     favoritesId: [{
         type: Schema.Types.ObjectId,
         ref: 'Recette',

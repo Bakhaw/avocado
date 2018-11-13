@@ -5,6 +5,7 @@ import GithubStrategy from './strategies/github';
 import GoogleStrategy from './strategies/google';
 import InstagramStrategy from './strategies/instagram';
 import LocalStrategy from './strategies/local';
+import SpotifyStrategy from './strategies/spotify';
 import TwitchStrategy from './strategies/twitch';
 import TwitterStrategy from './strategies/twitter';
 
@@ -23,6 +24,7 @@ passport.use(GithubStrategy);
 passport.use(GoogleStrategy);
 passport.use(InstagramStrategy);
 passport.use(LocalStrategy);
+passport.use(SpotifyStrategy);
 passport.use(TwitchStrategy);
 passport.use(TwitterStrategy);
 

@@ -78,11 +78,17 @@ const authenticateWithStrategy = (strategy, authRoute, callbackRoute, scopes) =>
     router.get(callbackRoute, passport.authenticate(strategy), (req, res) => res.redirect('/#/accueil'));
 }
 
-authenticateWithStrategy('google', '/google', '/google/callback', { scope: ['profile', 'email'] });
+authenticateWithStrategy('google', '/google', '/google/callback',{
+    scope: ['profile', 'email']
+});
 authenticateWithStrategy('facebook', '/facebook', '/facebook/callback');
 authenticateWithStrategy('twitter', '/twitter', '/twitter/callback');
 authenticateWithStrategy('instagram', '/instagram', '/instagram/callback');
 authenticateWithStrategy('github', '/github', '/github/callback');
 authenticateWithStrategy('twitch', '/twitch', '/twitch/callback');
+authenticateWithStrategy('spotify', '/spotify', '/spotify/callback', {
+    scope: ['user-read-email', 'user-read-private'],
+    showDialog: true
+});
 
 export default router;
