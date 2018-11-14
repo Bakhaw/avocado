@@ -3,7 +3,6 @@ import multer from 'multer';
 import path from 'path';
 
 import Recette from '../models/Recette';
-import User from '../models/User';
 
 const router = Router();
 
@@ -18,7 +17,7 @@ const upload = multer({ storage });
 
 router.get('/', (req, res) => {
     Recette.find({}, (err, allRecettes) => {
-        err ? console.log(err) : res.json(allRecettes)
+        return err ? console.log(err) : res.json(allRecettes)
     });
 });
 
@@ -28,35 +27,22 @@ router.get('/limit/:limit', (req, res) => {
 })
 
 router.get('/id/:id', (req, res) => {
-    console.log(req.params.id)
     Recette.findById(req.params.id, (err, recette) => {
-        err ? console.log(err) : res.json(recette)
+        return err ? console.log(err) : res.json(recette)
     });
 });
 
 router.post('/add', upload.single('recetteInfos.recetteImage'), (req, res) => {
     const newRecette = new Recette(req.body);
-    const userId = newRecette.authorInfos.id;
 
     newRecette.recetteInfos.recetteImage = req.file.filename;
     newRecette.save((err, recette) => {
-        if (err) {
-            res.send(err);
-        } else {
-            User.findById(userId, (err, user) => {
-                if (err) return console.log(err);
-
-                user.library.push(newRecette);
-                user.save();
-            });
-
-            res.json(`${recette.recetteInfos.title} added with success!`);
-        }
+        return err ? console.log(err) : res.json(`${recette.recetteInfos.title} added with success!`);
     })
 });
 
 // ? Like une recette
-router.post('/like/:recetteId/:userId', (req, res) => {
+router.get('/like/:recetteId/:userId', (req, res) => {
     const { recetteId, userId } = req.params;
 
     Recette.findById(recetteId, (err, recette) => {
@@ -84,9 +70,10 @@ router.get('/delete/:recetteId', (req, res) => {
 });
 
 // TODO Renvoie les recettes crées par l'user
-router.get('/createdBy/:userId', (req, res) => {
-    User.findById(req.params.userId, { library: 1, _id: 0 }, (err, library) => {
-        return err ? console.log(err) : res.json(library)
+router.get('/createdBy/:authorId', (req, res) => {
+    const query = { 'authorInfos.id': req.params.authorId };
+    Recette.find(query, (err, recettes) => {
+        return err ? console.log(err) : res.json(recettes)
     });
 })
 

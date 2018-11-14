@@ -104,7 +104,7 @@ export default class AppStateProvider extends Component {
   getSelectedUserRecipes = async () => {
     const { _id } = this.state.selectedUserProfile;
     const request = await axios.get(`/recipes/createdBy/${_id}`);
-    const selectedUserRecipes = await request.data.library;
+    const selectedUserRecipes = await request.data;
     await this.setState({ selectedUserRecipes });
   }
 
