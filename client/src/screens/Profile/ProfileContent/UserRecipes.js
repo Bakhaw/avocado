@@ -2,11 +2,12 @@ import React from 'react';
 
 import RecetteCard from '../../../components/RecetteCard';
 
-const UserRecipes = ({ selectedUserRecipes }) => {
+const UserRecipes = ({ refreshRecipes, selectedUserRecipes }) => {
   return (
     selectedUserRecipes.map((item, index) => (
       <RecetteCard key={index}
-        item={item} />
+        item={item}
+        refreshRecipes={refreshRecipes} />
     ))
   );
 }

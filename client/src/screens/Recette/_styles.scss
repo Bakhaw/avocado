@@ -9,10 +9,11 @@
   min-height: 100%;
   width: 100%;
   .recette-page__container-first-children {
-    background: linear-gradient(#000 0, rgba(0, 0, 0, 0.65) 0);
+    background-color: #fff;
+    background: linear-gradient(#fff 0, rgba(255, 255, 255, 0.85) 0);
     border-radius: .5rem;
     width: 60%;
-    padding: 15px 0;
+    padding: 15px;
     .recette-page__title-container {
       width: 100%;
       display: flex;
@@ -21,7 +22,7 @@
       align-items: center;
       h2, h4 {
         font-weight: normal !important;
-        color: #fff;
+        color: #212121;
         margin: 0;
       }
       h4 {
@@ -34,32 +35,43 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      color: #fff;
+      color: #212121;
       font-weight: normal;
       width: 100%;
-      .recette-page__instructions-container {
-        .recette-page__instructions-text {
-          width: 80%;
-        }
-      }
       .row {
         display: flex;
         justify-content: flex-start;
-        align-items: flex-start;
-        width: 50%;
+        align-items: center;
+        width: 100%;
         margin: 20px 0;
+        ul {
+          padding: 0;
+          li {
+            list-style-type: none;
+          }
+        }
         h4 {
-          color: #fff;
+          color: #212121;
+          margin: 0;
           font-weight: normal;
         }
         img {
           height: 50px;
           width: 50px;
+          margin-right: 10px;
         }
         .chef-icon {
           width: 70px;
           height: 70px;
         } 
+      }
+      .recette-page__instructions-container {
+        .recette-page__instructions-text {
+          width: 100%;
+          h3 {
+            line-height: 35px;
+          }
+        }
       }
     }
   }

@@ -70,7 +70,11 @@ class Recette extends Component {
                                         className='basket-icon'
                                         src={BasketIcon} />
                                     <ul className='recette-page__ingredients-text'>
-                                        {ingredients.map((ingr, i) => <li key={i}>{ingr}</li>)}
+                                        {ingredients.map((ingr, i) => (
+                                            <li key={i}>
+                                                <h4>{ingr}</h4>
+                                            </li>
+                                        ))}
                                     </ul>
                                 </div>
                                 <div className='row recette-page__instructions-container'>
@@ -78,7 +82,7 @@ class Recette extends Component {
                                         className='chef-icon'
                                         src={ChefIcon} />
                                     <div className='recette-page__instructions-text'>
-                                        <h4>{instructions}</h4>
+                                        <h3>{instructions}</h3>
                                     </div>
                                 </div>
                             </div>

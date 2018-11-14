@@ -45,7 +45,7 @@ class Navbar extends Component {
       <AppBar
         position='fixed'
         style={{ margin: 0 }}
-        className={classNames(classes.appBar, isLeftMenuOpen && classes.appBarShift)
+        className={classNames('navbar', classes.appBar, isLeftMenuOpen && classes.appBarShift)
         }
       >
         <Toolbar disableGutters={!isLeftMenuOpen}>

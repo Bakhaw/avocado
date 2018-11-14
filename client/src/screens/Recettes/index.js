@@ -11,6 +11,11 @@ class Recettes extends Component {
     this.props.contextActions.getAllRecipes();
   }
 
+  componentDidUpdate(prevProps, prevState) {
+    console.log('prev', prevProps.contextState.recipes);
+    console.log('this', this.props.contextState.recipes);
+  }
+
   render() {
     const { contextState } = this.props;
     const { recipes } = contextState;
@@ -20,7 +25,8 @@ class Recettes extends Component {
         <div className='recette-cards-container'>
           {recipes.map((item, index) => (
               <RecetteCard key={index}
-                item={item} />
+                item={item}
+                refreshRecipes={this.props.contextActions.getAllRecipes}/>
           ))}
         </div>
       </LayoutContainer>

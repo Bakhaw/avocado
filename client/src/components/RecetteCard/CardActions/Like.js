@@ -16,8 +16,8 @@ class Like extends Component {
   }
 
   likeRecette = async () => {
-    const { contextActions, contextState, item } = this.props;
-    const { getAllFavorites, getAllRecipes, getSelectedUserRecipes } = contextActions;
+    const { contextActions, contextState, item, refreshRecipes } = this.props;
+    const { getAllFavorites, getAllRecipes, getUserLogged } = contextActions;
     const { userLogged } = contextState;
 
     const recetteId = item._id;
@@ -30,9 +30,10 @@ class Like extends Component {
     }
 
     await axios.get(`/recipes/like/${recetteId}/${userId}`);
-    await getAllRecipes();
-    await getAllFavorites();
-    await getSelectedUserRecipes();
+    await refreshRecipes();
+    // await getAllRecipes();
+    // await getAllFavorites();
+    // await getUserLogged();
     await this.checkLikeButtonClass();
   }
 

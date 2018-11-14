@@ -15,7 +15,7 @@ class Favoris extends Component {
     return (
       <LayoutContainer>
         <div className='favorites-container'>
-          <FavoriteRecipes />
+          <FavoriteRecipes refreshRecipes={this.props.contextActions.getAllFavorites} />
         </div>
       </LayoutContainer>
     );
